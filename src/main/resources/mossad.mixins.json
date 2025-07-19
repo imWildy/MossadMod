@@ -1,0 +1,10 @@
+{
+  "required": true,
+  "package": "dev.wildy.mossad.mixins",
+  "compatibilityLevel": "JAVA_17",
+  "client": [],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
