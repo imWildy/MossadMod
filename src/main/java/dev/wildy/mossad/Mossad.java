@@ -4,6 +4,7 @@ import dev.wildy.mossad.commands.StatsCommand;
 import dev.wildy.mossad.hud.OnlineFriendsList;
 import dev.wildy.mossad.modules.ChatCleaner;
 import com.mojang.logging.LogUtils;
+import dev.wildy.mossad.modules.FakeHB;
 import meteordevelopment.meteorclient.addons.MeteorAddon;
 import meteordevelopment.meteorclient.commands.Commands;
 import meteordevelopment.meteorclient.systems.hud.Hud;
@@ -23,6 +24,7 @@ public class Mossad extends MeteorAddon {
 
         // Modules
         Modules.get().add(new ChatCleaner());
+        Modules.get().add(new FakeHB());
 
         // Hud
         Hud.get().register(OnlineFriendsList.INFO);
