@@ -5,10 +5,7 @@ import meteordevelopment.meteorclient.settings.BoolSetting;
 import meteordevelopment.meteorclient.settings.Setting;
 import meteordevelopment.meteorclient.settings.StringSetting;
 import meteordevelopment.meteorclient.systems.friends.Friends;
-import meteordevelopment.meteorclient.systems.hud.Alignment;
-import meteordevelopment.meteorclient.systems.hud.HudElement;
-import meteordevelopment.meteorclient.systems.hud.HudElementInfo;
-import meteordevelopment.meteorclient.systems.hud.HudRenderer;
+import meteordevelopment.meteorclient.systems.hud.*;
 import meteordevelopment.meteorclient.settings.SettingGroup;
 import meteordevelopment.meteorclient.utils.player.PlayerUtils;
 import meteordevelopment.meteorclient.utils.render.color.Color;
@@ -59,7 +56,7 @@ public class OnlineFriendsList extends HudElement {
         setSize(width, height);
 
         double renderX = x + alignX(renderer.textWidth(title.get(), true, 1), Alignment.Auto);
-        renderer.text(title.get(), renderX, y, new Color(175, 175, 175), true, 1);
+        renderer.text(title.get(), renderX, y, Hud.get().textColors.get().getFirst(), true, 1);
 
         List<String> names = new ArrayList<>();
         for (PlayerListEntry entry : mc.player.networkHandler.getPlayerList()) {
@@ -74,7 +71,7 @@ public class OnlineFriendsList extends HudElement {
         Collections.sort(names);
 
         for (String name : names) {
-            Color color = new Color(255, 255, 255);
+            Color color = Hud.get().textColors.get().get(1);
 
             double textWidth = renderer.textWidth(name, false, 1);
             width = Math.max(width, textWidth);
