@@ -1,6 +1,5 @@
 package dev.wildy.mossad;
 
-import dev.wildy.mossad.commands.StatsCommand;
 import dev.wildy.mossad.hud.OnlineFriendsList;
 import dev.wildy.mossad.modules.ChatCleaner;
 import com.mojang.logging.LogUtils;
@@ -30,9 +29,6 @@ public class Mossad extends MeteorAddon {
 
         // Hud
         Hud.get().register(OnlineFriendsList.INFO);
-
-        // Commands
-        Commands.add(new StatsCommand());
 
     }
 
