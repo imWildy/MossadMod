@@ -4,6 +4,7 @@ import meteordevelopment.meteorclient.events.game.ReceiveMessageEvent;
 import meteordevelopment.meteorclient.settings.Setting;
 import meteordevelopment.meteorclient.settings.SettingGroup;
 import meteordevelopment.meteorclient.settings.StringListSetting;
+import meteordevelopment.meteorclient.settings.StringSetting;
 import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.orbit.EventHandler;
 
@@ -18,6 +19,12 @@ public class ChatCleaner extends Module {
     }
 
     private final SettingGroup sgGeneral = this.settings.getDefaultGroup();
+    private final Setting<String> suffix = sgGeneral.add(new StringSetting.Builder()
+        .name("username-suffix")
+        .description("Suffix of username in chat.")
+        .defaultValue("»")
+        .build()
+    );
     private final Setting<List<String>> usernames = sgGeneral.add(new StringListSetting.Builder()
         .name("usernames")
         .description("Delete if username includes text.")
@@ -37,8 +44,8 @@ public class ChatCleaner extends Module {
 
         String username;
         String message;
-        if (msg.contains("»")) {
-            String[] parts = msg.split("»", 2);
+        if (msg.contains(suffix.get())) {
+            String[] parts = msg.split(suffix.get(), 2);
             if (parts.length != 2) return;
 
             String[] raw = parts[0].trim().split("] ", 2);
