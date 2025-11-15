@@ -7,6 +7,7 @@ A [meteor client](https://meteorclient.com) add-on for 1.21.4.
 - Chat Cleaner
 - Fake Highway Builder
 - Ping Spoof
+- Autism
 
 ### Commands:
 - *None yet...*
