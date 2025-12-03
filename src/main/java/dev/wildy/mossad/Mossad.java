@@ -1,13 +1,10 @@
 package dev.wildy.mossad;
 
 import dev.wildy.mossad.hud.OnlineFriendsList;
-import dev.wildy.mossad.modules.Autism;
-import dev.wildy.mossad.modules.ChatCleaner;
+import dev.wildy.mossad.modules.*;
 import com.mojang.logging.LogUtils;
-import dev.wildy.mossad.modules.FakeHB;
-import dev.wildy.mossad.modules.PingSpoof;
 import meteordevelopment.meteorclient.addons.MeteorAddon;
-import meteordevelopment.meteorclient.commands.Commands;
+
 import meteordevelopment.meteorclient.systems.hud.Hud;
 import meteordevelopment.meteorclient.systems.hud.HudGroup;
 import meteordevelopment.meteorclient.systems.modules.Category;
@@ -28,6 +25,7 @@ public class Mossad extends MeteorAddon {
         Modules.get().add(new FakeHB());
         Modules.get().add(new PingSpoof());
         Modules.get().add(new Autism());
+        Modules.get().add(new AutoSpleef());
 
         // Hud
         Hud.get().register(OnlineFriendsList.INFO);

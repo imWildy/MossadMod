@@ -4,8 +4,9 @@ A [meteor client](https://meteorclient.com) add-on for 1.21.4.
 
 ## Features
 ### Modules:
-- Chat Cleaner
 - Fake Highway Builder
+- Auto Spleef
+- Chat Cleaner
 - Ping Spoof
 - Autism
 
