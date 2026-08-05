@@ -1,8 +1,7 @@
 package dev.alex.mossad;
 
 import dev.alex.mossad.hud.DubCounter;
-import dev.alex.mossad.hud.OnlineFriendsList;
-import dev.alex.mossad.modules.PingSpoof;
+import dev.alex.mossad.hud.*;
 import dev.alex.mossad.modules.*;
 import com.mojang.logging.LogUtils;
 import meteordevelopment.meteorclient.addons.MeteorAddon;
@@ -24,6 +23,8 @@ public class Mossad extends MeteorAddon {
 
         // Modules
         Modules.get().add(new PingSpoof());
+        Modules.get().add(new VanillaChat());
+        Modules.get().add(new ClickableLinks());
 
         // Hud
         Hud.get().register(OnlineFriendsList.INFO);
