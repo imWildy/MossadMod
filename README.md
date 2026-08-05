@@ -8,6 +8,7 @@ A [meteor client](https://meteorclient.com) add-on for 26.1.
 
 ### Hud:
 - Online Friends List
+- Dub Counter
 
 ## Usage
 ### Building
