@@ -6,6 +6,7 @@ A [meteor client](https://meteorclient.com) addon for 26.1.
 ### Modules:
 - Ping Spoof
 - Vanilla Chat *(ported from [9aze/vanilla-ui](https://github.com/9aze/vanilla-ui))*
+- Clickable Links
 
 ### Hud:
 - Online Friends List
