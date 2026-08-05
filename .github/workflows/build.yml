@@ -28,7 +28,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag_name: snapshot
-          name: Dev Build
+          name: Release
           prerelease: true
           files: |
             ./build/libs/*.jar
