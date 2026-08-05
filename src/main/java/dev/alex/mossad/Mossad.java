@@ -1,7 +1,8 @@
-package dev.wildy.mossad;
+package dev.alex.mossad;
 
-import dev.wildy.mossad.hud.OnlineFriendsList;
-import dev.wildy.mossad.modules.*;
+import dev.alex.mossad.hud.OnlineFriendsList;
+import dev.alex.mossad.modules.PingSpoof;
+import dev.alex.mossad.modules.*;
 import com.mojang.logging.LogUtils;
 import meteordevelopment.meteorclient.addons.MeteorAddon;
 
@@ -21,11 +22,7 @@ public class Mossad extends MeteorAddon {
         LOG.info("Initialising Mossad Mod");
 
         // Modules
-        Modules.get().add(new ChatCleaner());
-        Modules.get().add(new FakeHB());
         Modules.get().add(new PingSpoof());
-        Modules.get().add(new Autism());
-        Modules.get().add(new AutoSpleef());
 
         // Hud
         Hud.get().register(OnlineFriendsList.INFO);
@@ -39,6 +36,6 @@ public class Mossad extends MeteorAddon {
 
     @Override
     public String getPackage() {
-        return "dev.wildy.mossad";
+        return "dev.alex.mossad";
     }
 }

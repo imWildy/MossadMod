@@ -2,26 +2,35 @@
   "schemaVersion": 1,
   "id": "mossad-mod",
   "version": "${version}",
-  "name": "Mossad Mod",
-  "description": "Am Yisrael Chai",
+  "name": "Mossad",
+  "description": "The best Israeli Meteor Addon",
   "authors": [
-    "Wildy"
+    "W1ldy"
   ],
+  "contact": {
+    "sources": "https://github.com/alxuk/MossadMod"
+  },
+  "icon": "assets/template/icon.png",
   "environment": "client",
   "entrypoints": {
     "meteor": [
-      "dev.wildy.mossad.Mossad"
+      "dev.alex.mossad.Mossad"
     ]
   },
   "mixins": [
-    "mossad.mixins.json"
+    "mossad.json"
   ],
   "custom": {
-    "meteor-client:color": "50,50,255"
+    "meteor-client:color": "225,25,25",
+    "modmenu": {
+      "parent": {
+        "id": "meteor-client"
+      }
+    }
   },
   "depends": {
-    "java": ">=21",
-    "minecraft": ["${mc_version}"],
+    "java": ">=${jdk_version}",
+    "minecraft": "${minecraft_version}",
     "meteor-client": "*"
   }
 }

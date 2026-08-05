@@ -1,21 +1,18 @@
-package dev.wildy.mossad.hud;
+package dev.alex.mossad.hud;
 
-import dev.wildy.mossad.Mossad;
+import dev.alex.mossad.Mossad;
 import meteordevelopment.meteorclient.settings.BoolSetting;
 import meteordevelopment.meteorclient.settings.Setting;
 import meteordevelopment.meteorclient.settings.StringSetting;
 import meteordevelopment.meteorclient.systems.friends.Friends;
 import meteordevelopment.meteorclient.systems.hud.*;
 import meteordevelopment.meteorclient.settings.SettingGroup;
-import meteordevelopment.meteorclient.utils.player.PlayerUtils;
 import meteordevelopment.meteorclient.utils.render.color.Color;
-import net.minecraft.client.network.PlayerListEntry;
-import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.client.multiplayer.PlayerInfo;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 import static meteordevelopment.meteorclient.MeteorClient.mc;
 
@@ -49,7 +46,7 @@ public class OnlineFriendsList extends HudElement {
 
     @Override
     public void render(HudRenderer renderer) {
-        if (mc.player == null || mc.getNetworkHandler() == null) return;
+        if (mc.player == null || mc.getConnection() == null) return;
 
         double height = renderer.textHeight(true, 1) + 2;
         double width = renderer.textWidth(title.get(), true, 1);
@@ -59,10 +56,10 @@ public class OnlineFriendsList extends HudElement {
         renderer.text(title.get(), renderX, y, Hud.get().textColors.get().getFirst(), true, 1);
 
         List<String> names = new ArrayList<>();
-        for (PlayerListEntry entry : mc.player.networkHandler.getPlayerList()) {
-            String name = entry.getProfile().getName();
+        for (PlayerInfo entry : mc.player.connection.getOnlinePlayers()) {
+            String name = entry.getProfile().name();
 
-            if (!includeSelf.get() && name.equals(mc.player.getGameProfile().getName())) continue;
+            if (!includeSelf.get() && name.equals(mc.player.getGameProfile().name())) continue;
             if (Friends.get().get(name) == null) continue;
 
             names.add(name);

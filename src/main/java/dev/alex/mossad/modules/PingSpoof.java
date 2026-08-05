@@ -1,4 +1,4 @@
-package dev.wildy.mossad.modules;
+package dev.alex.mossad.modules;
 
 import meteordevelopment.meteorclient.events.packets.PacketEvent;
 import meteordevelopment.meteorclient.settings.IntSetting;
@@ -6,12 +6,12 @@ import meteordevelopment.meteorclient.settings.Setting;
 import meteordevelopment.meteorclient.settings.SettingGroup;
 import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.orbit.EventHandler;
-import net.minecraft.network.ClientConnection;
-import net.minecraft.network.packet.c2s.common.KeepAliveC2SPacket;
-import net.minecraft.network.packet.s2c.common.KeepAliveS2CPacket;
+import net.minecraft.network.Connection;
+import net.minecraft.network.protocol.common.ClientboundKeepAlivePacket;
+import net.minecraft.network.protocol.common.ServerboundKeepAlivePacket;
 
 
-import static dev.wildy.mossad.Mossad.CATEGORY;
+import static dev.alex.mossad.Mossad.CATEGORY;
 
 public class PingSpoof extends Module {
 
@@ -22,7 +22,7 @@ public class PingSpoof extends Module {
     private final SettingGroup sgGeneral = this.settings.getDefaultGroup();
     private final Setting<Integer> delay = sgGeneral.add(new IntSetting.Builder()
         .name("delay")
-        .description("The delay to the packets")
+        .description("The delay to the packets (in ms).")
         .defaultValue(100)
         .min(0)
         .sliderMin(0)
@@ -32,7 +32,7 @@ public class PingSpoof extends Module {
 
     @EventHandler
     public void onReceivePacket(PacketEvent.Receive event) {
-        if (event.packet instanceof KeepAliveS2CPacket) {
+        if (event.packet instanceof ClientboundKeepAlivePacket) {
             event.cancel();
 
             new Thread(() -> {
@@ -43,8 +43,8 @@ public class PingSpoof extends Module {
                 }
 
                 mc.execute(() -> {
-                    ClientConnection connection = mc.getNetworkHandler().getConnection();
-                    connection.send(new KeepAliveC2SPacket(((KeepAliveS2CPacket) event.packet).getId()));
+                    Connection connection = mc.getConnection().getConnection();
+                    connection.send(new ServerboundKeepAlivePacket(((ClientboundKeepAlivePacket) event.packet).getId()));
                 });
             }).start();
         }
