@@ -7,9 +7,10 @@ import meteordevelopment.orbit.EventHandler;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-
+import net.minecraft.network.chat.Style;
 
 import java.net.URI;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -31,35 +32,37 @@ public class ClickableLinks extends Module {
 
     @EventHandler(priority = -200)
     public void onMessageReceive(ReceiveMessageEvent e) {
-        MutableComponent msg = e.getMessage().copy();
-        String text = msg.getString();
-
-        Matcher matcher = linkRegex.matcher(text);
-        if (!matcher.find()) return;
-
         MutableComponent finalMsg = Component.empty();
-        int lastEnd = 0;
 
-        do {
-            finalMsg.append(Component.literal(text.substring(lastEnd, matcher.start())));
+        e.getMessage().visit((style, text) -> {
+            Matcher matcher = linkRegex.matcher(text);
+            int lastEnd = 0;
 
-            String link = matcher.group();
+            while (matcher.find()) {
+                if (matcher.start() > lastEnd) {
+                    finalMsg.append(Component.literal(text.substring(lastEnd, matcher.start())).withStyle(style));
+                }
 
-            finalMsg.append(
-                Component.literal(link)
-                    .withStyle(style -> style
-                        .withUnderlined(underline.get())
-                        .withClickEvent(new ClickEvent.OpenUrl(
-                            URI.create(link.startsWith("http") ? link : "https://" + link)
-                        ))
-                    )
-            );
+                String link = matcher.group();
 
-            lastEnd = matcher.end();
+                finalMsg.append(
+                    Component.literal(link)
+                        .withStyle(style
+                            .withUnderlined(underline.get())
+                            .withClickEvent(new ClickEvent.OpenUrl(
+                                URI.create(link.startsWith("http") ? link : "https://" + link)
+                            ))
+                        )
+                );
+                lastEnd = matcher.end();
+            }
 
-        } while (matcher.find());
+            if (lastEnd < text.length()) {
+                finalMsg.append(Component.literal(text.substring(lastEnd)).withStyle(style));
+            }
+            return Optional.<Void>empty();
+        }, Style.EMPTY);
 
-        finalMsg.append(Component.literal(text.substring(lastEnd)));
         e.setMessage(finalMsg);
     }
 }
