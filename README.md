@@ -15,7 +15,7 @@ A [meteor client](https://meteorclient.com) addon for 26.1.
 ## Installation
 Download the [latest release](https://github.com/alxuk/MossadMod/releases/tag/release) or build it manually.
 ### Building
-- Clone the repositiory with `git clone git@github.com:imWildy/MossadMod.git`
+- Clone the repositiory with `git clone git@github.com:alxuk/MossadMod.git`
 - Run `gradlew.bat build` (Windows) or `./gradlew build` (Linux/MacOS)
 - The .jar file will be in `./builds/libs/`
 
