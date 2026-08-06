@@ -1,21 +1,15 @@
 package dev.alex.mossad.modules;
 
 import meteordevelopment.meteorclient.events.game.ReceiveMessageEvent;
-import meteordevelopment.meteorclient.events.packets.PacketEvent;
 import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.orbit.EventHandler;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.Connection;
 import net.minecraft.network.chat.ClickEvent;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.protocol.common.ClientboundKeepAlivePacket;
-import net.minecraft.network.protocol.common.ServerboundKeepAlivePacket;
 
 
 import java.net.URI;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,7 +29,7 @@ public class ClickableLinks extends Module {
         .build()
     );
 
-    @EventHandler
+    @EventHandler(priority = -200)
     public void onMessageReceive(ReceiveMessageEvent e) {
         MutableComponent msg = e.getMessage().copy();
         String text = msg.getString();
