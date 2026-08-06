@@ -12,15 +12,19 @@ A [meteor client](https://meteorclient.com) addon for 26.1.
 - Online Friends List
 - Dub Counter
 
-## Usage
+## Installation
+Download the [latest release](https://github.com/alxuk/MossadMod/releases/tag/release) or build it manually.
 ### Building
 - Clone the repositiory with `git clone git@github.com:imWildy/MossadMod.git`
-- Run `./gradlew build`
+- Run `gradlew.bat build` (Windows) or `./gradlew build` (Linux/MacOS)
 - The .jar file will be in `./builds/libs/`
-### Installation
+
+
+
+## Usage
 - Copy the .jar file to the Minecraft mods folder
 - Run Minecraft.
     - Make sure you have both [Fabric](https://fabricmc.net) and [Meteor Client](https://meteorclient.com) installed.
 
 ## Issues or Suggestions?
-Feel free to open an issue or contribute.
+Feel free to open an [issue](https://github.com/alxuk/MossadMod/issues) or contribute and open a [pull request](https://github.com/alxuk/MossadMod/pulls)!
