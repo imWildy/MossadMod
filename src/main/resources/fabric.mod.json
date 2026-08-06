@@ -21,7 +21,7 @@
     "mossad.json"
   ],
   "custom": {
-    "meteor-client:color": "225,25,25",
+    "meteor-client:color": "0,94,184",
     "modmenu": {
       "parent": {
         "id": "meteor-client"
