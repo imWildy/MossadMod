@@ -10,7 +10,7 @@
   "contact": {
     "sources": "https://github.com/alxuk/MossadMod"
   },
-  "icon": "assets/template/icon.png",
+  "icon": "assets/mossad/icon.png",
   "environment": "client",
   "entrypoints": {
     "meteor": [
