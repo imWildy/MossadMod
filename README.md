@@ -1,9 +1,8 @@
 <div align="center">
 <img src="src/main/resources/assets/mossad/icon.png" alt="mossad-mod-logo" width="15%">
 <h1>Mossad Mod</h1>
+A jewish meteor client addon for 26.1.
 </div>
-
-A [meteor client](https://meteorclient.com) addon for 26.1.
 
 ## Features
 ### Modules:
